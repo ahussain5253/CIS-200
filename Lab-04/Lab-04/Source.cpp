@@ -67,7 +67,7 @@ int main() {
 
 	for (int i = 0; i < rows; ++i) {
 
-		y[i] = new int [rows];
+		y[i] = new int[rows];
 
 		for (int j = 0; j < columns; ++j) {
 
@@ -104,6 +104,19 @@ int main() {
 
 		cout << endl;
 	}
+
+	// deallocate arrays
+
+	delete[] x;
+
+	for (int i = 0; i < rows; ++i) {
+
+		delete[] y[i];
+	}
+
+	delete[] y;
+
+	return 0;
 
 
 }
