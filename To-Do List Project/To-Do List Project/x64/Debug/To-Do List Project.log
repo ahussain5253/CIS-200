@@ -1,0 +1,5 @@
+﻿  Source.cpp
+C:\Users\Ammar\Desktop\CIS-200\To-Do List Project\To-Do List Project\Source.cpp(90,10): error C2512: 'ToDoItem': no appropriate default constructor available
+C:\Users\Ammar\Desktop\CIS-200\To-Do List Project\To-Do List Project\Source.cpp(13,7): message : see declaration of 'ToDoItem'
+C:\Users\Ammar\Desktop\CIS-200\To-Do List Project\To-Do List Project\Source.cpp(100,42): error C2512: 'ToDoItem': no appropriate default constructor available
+C:\Users\Ammar\Desktop\CIS-200\To-Do List Project\To-Do List Project\Source.cpp(13,7): message : see declaration of 'ToDoItem'
