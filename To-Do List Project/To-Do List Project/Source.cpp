@@ -1,112 +1,55 @@
-#include <iostream>
-#include <string>
-#include <ctime>
 
-#define MAX_SIZE 100
+#include "Class_ToDoItem.h"
+#include "Class_ToDoList.h"
 
-using namespace std;
-
-enum type { shopping, housing, work};
-enum status { finished, running, hold};
-
-
-class ToDoItem {
-
-public:
-
-	ToDoItem(int Id, string Title, string Description, type Type);
-	ToDoItem(int Id, string Title, int Priority, type Type);
-	ToDoItem(int Id, string Title, int Priority, type Type, time_t DueDate);
-
-	int getID() { return Id; }
-	void setID(int Id) { this->Id = Id; }
-
-	string getTitle() { return Title; }
-	void setTitle(string Title) { this->Title = Title; }
-
-	string getDescription() { return Description; }
-	void setDescription(string Description) { this->Description = Description; }
-
-	type getType() { return Type; }
-	void setType(type Type) { this->Type = Type; }
-
-	int getPriority() { return Priority; }
-	void setPriority(int Priority) { this->Priority = Priority; }
-
-	status getStatus() { return Status; }
-	void set(status Status) { this->Status = Status; }
-
-	time_t getCreateDate() { return CreateDate; }
-	void setCreateDate(time_t CreateDate) { this->CreateDate = CreateDate; }
-
-	time_t getDueDate() { return DueDate; }
-	void setDueDate(time_t DueDate) { this->DueDate = DueDate; }
-
-	time_t getLastModified() { return LastModified; }
-	void setLastModified(time_t LastModified) { this->LastModified = LastModified; }
-
-private:
-
-	int Id;
-	string Title;
-	string Description;
-	int Priority;
-	type Type;
-	status Status;
-	time_t CreateDate = time(0);
-	time_t DueDate;
-	time_t LastModified;
-};
-
-ToDoItem::ToDoItem(int Id, string Title, string Description, type Type) {
-
-	this->Id = Id;
-	this->Title = Title;
-	this->Type = Type;
-	this->Description = Description;
-}
-
-ToDoItem::ToDoItem(int Id, string Title, int Priority, type Type) {
-	
-	this->Id = Id;
-	this->Title = Title;
-	this->Type = Type;
-	this->Priority = Priority;
-}
-
-ToDoItem::ToDoItem(int Id, string Title, int Priority, type Type, time_t DueDate) {
-
-	this->Id = Id;
-	this->Title = Title;
-	this->Type = Type;
-	this->Priority = Priority;
-	this->DueDate = DueDate;
-}
-
-class ToDoList {
-
-public:
-
-	ToDoList() { count = 0; }
-	ToDoList(const ToDoList& list);
-
-private:
-
-	int count;
-	ToDoItem ToDoObjects[MAX_SIZE];
-
-};
-
-ToDoList::ToDoList(const ToDoList& list) {
-
-	ToDoList ToDoObjects = list;
-
-}
 
 
 int main() {
 
-	
+	int again = 1;
+
+	while (again == 1) {
+
+		int userChoice;
+
+		cout << "Menu for To-Do List Program:" << endl << endl;
+		cout << "Select from the items below:" << endl << endl;
+		cout << "1: Create a To-Do list or Add an item to To-Do list" << endl << endl;
+		cin >> userChoice;
+		cout << endl;
+
+		if (userChoice == 1) {
+
+			ToDoList mytodo;
+
+			int n;
+			
+			n = mytodo.AddToDoItem();
+
+			cout << "Item created with Id #" << n << endl;
+
+		}
+
+		for (int i = 0; i < List.size(); i++) {
+
+			cout << List.at(i).getID();
+			cout << List.at(i).getType();
+			cout << List.at(i).getStatus();
+
+		}
+
+		cout << "again" << endl;
+		cin >> again;
+
+
+	}
+		
+
+		
+
+
 
 	return 0;
 }
+
+
