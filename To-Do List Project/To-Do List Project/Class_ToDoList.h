@@ -70,7 +70,7 @@ public:
 
 		int priority;
 
-		cout << "What is the priority number? (1-5)" << endl;
+		cout << "What is the priority number? (1-5)" << endl << endl;
 		cin >> priority;
 
 	

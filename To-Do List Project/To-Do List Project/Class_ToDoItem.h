@@ -48,7 +48,7 @@ public:
 		if (this->Status == 1) { string running = "running"; return running; }
 		if (this->Status == 2) { string hold = "hold"; return hold; }
 	}
-	void set(status Status) { this->Status = Status; }
+	void setStatus(status Status) { this->Status = Status; }
 
 	time_t getCreateDate() { return CreateDate; }
 	void setCreateDate(time_t CreateDate) { this->CreateDate = CreateDate; }
