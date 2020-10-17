@@ -50,14 +50,38 @@ public:
 	}
 	void setStatus(status Status) { this->Status = Status; }
 
-	time_t getCreateDate() { return CreateDate; }
-	void setCreateDate(time_t CreateDate) { this->CreateDate = CreateDate; }
+	void getCreateDate() {
 
-	time_t getDueDate() { return DueDate; }
-	void setDueDate(time_t DueDate) { this->DueDate = DueDate; }
+		time_t now = time(0);
 
-	time_t getLastModified() { return LastModified; }
-	void setLastModified(time_t LastModified) { this->LastModified = LastModified; }
+		tm* ltm = localtime(&now);
+
+		cout << 1 + ltm->tm_mon << "/" << ltm->tm_mday << "/" << 1900 + ltm->tm_year;
+
+	}
+
+	void getDueDate() { cout << this->month << "/" << this->day << "/" << this->year; }
+	void setDueDate() { 
+
+		cout << endl;
+		cout << "Please enter the due date in the format MM DD YYYY (without slashes only spaces)" << endl << endl;	
+		cin >> this->month >> this->day >> this->year;
+
+	
+	}
+
+	void getLastModified() { 
+	
+		cout << this->month << "/" << this->day << "/" << this->year;
+	
+	}
+	void setLastModified() { 
+	
+		cout << endl;
+		cout << "Please enter today's date in the format MM DD YYYY (without slashes only spaces)" << endl << endl;
+		cin >> this->LMmonth >> this->LMday >> this->LMyear;
+	
+	}
 
 private:
 
@@ -65,10 +89,14 @@ private:
 	string Title;
 	string Description;
 	int Priority;
+	int month;
+	int day;
+	int year;
+	int LMmonth;
+	int LMday;
+	int LMyear;
 	type Type;
 	status Status;
-	time_t CreateDate = time(0);
-	time_t DueDate;
 	time_t LastModified;
 };
 
@@ -88,13 +116,4 @@ ToDoItem::ToDoItem(int Id, string Title, int Priority, type Type) {
 	this->Title = Title;
 	this->Type = Type;
 	this->Priority = Priority;
-}
-
-ToDoItem::ToDoItem(int Id, string Title, int Priority, type Type, time_t DueDate) {
-
-	this->Id = Id;
-	this->Title = Title;
-	this->Type = Type;
-	this->Priority = Priority;
-	this->DueDate = DueDate;
 }

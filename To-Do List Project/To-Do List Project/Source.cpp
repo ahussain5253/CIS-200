@@ -2,6 +2,9 @@
 #include "Class_ToDoItem.h"
 #include "Class_ToDoList.h"
 
+#include <fstream>
+#include <ostream>
+
 
 
 int main() {
@@ -19,17 +22,21 @@ int main() {
 		cout << "2: Edit To-Do Item by Id" << endl;
 		cout << "3: Delete To-Do Item by Id" << endl;
 		cout << "4: Delete To-Do Item by Type" << endl;
-		cout << "5: Delete To-Do Item by Status" << endl << endl;
+		cout << "5: Delete To-Do Item by Status" << endl;
+		cout << "6: Write To-Do Items to a text file" << endl;
+		cout << "7: Read To-Do Items from a text file" << endl;
+		cout << "8: Print Items to console with different options" << endl;
+		cout << "9: Clone current To-Do List to another To-Do List" << endl << endl;
 		cin >> userChoice;
 		cout << endl;
 
 		if (userChoice == 1) {
 
-			ToDoList mytodo;
+			ToDoList mytodo1;
 
 			int n;
 
-			n = mytodo.AddToDoItem();
+			n = mytodo1.AddToDoItem();
 
 			cout << endl;
 			cout << "Item created with Id #" << n << endl << endl;
@@ -54,7 +61,7 @@ int main() {
 					cout << endl;
 					cout << "What would you like to edit?" << endl << endl;
 					cout << "Choose from the options below and enter just the number:" << endl << endl;
-					cout << "1: TItle" << endl << "2: Description" << endl << "3: Type" << endl << "4: Priority" << endl << "5: Status" << endl << endl;
+					cout << "1: TItle" << endl << "2: Description" << endl << "3: Type" << endl << "4: Priority" << endl << "5: Status" << endl << "6: Due Date" << endl << endl;
 					cin >> toEdit;
 
 					if (toEdit == 1) {
@@ -68,6 +75,8 @@ int main() {
 						getline(cin, newTitle);
 
 						List.at(i).setTitle(newTitle);
+
+						List.at(i).setLastModified();
 
 						cout << endl;
 						cout << "Title of Item Id #" << List.at(i).getID() << " has been changed to: " << List.at(i).getTitle() << endl << endl;
@@ -119,6 +128,8 @@ int main() {
 
 						List.at(i).setType(newType);
 
+						List.at(i).setLastModified();
+
 						cout << endl;
 						cout << "Type of Item Id #" << List.at(i).getID() << " has been changed to: " << List.at(i).getType() << endl << endl;
 
@@ -135,6 +146,8 @@ int main() {
 						cin >> newPriortiy;
 
 						List.at(i).setPriority(newPriortiy);
+
+						List.at(i).setLastModified();
 
 						cout << endl;
 						cout << "Priority of Item Id #" << List.at(i).getID() << " has been changed to: " << List.at(i).getPriority() << endl << endl;
@@ -169,9 +182,21 @@ int main() {
 
 						List.at(i).setStatus(newStatus);
 
+						List.at(i).setLastModified();
+
 						cout << endl;
 						cout << "Status of Item Id #" << List.at(i).getID() << " has been changed to: " << List.at(i).getStatus() << endl << endl;
 
+
+					}
+					if (toEdit == 6) {
+
+						List.at(i).setDueDate();
+
+						List.at(i).setLastModified();
+
+						cout << endl;
+						cout << "The due date has been set to "; List.at(i).getDueDate(); cout << endl << endl;
 
 					}
 
@@ -207,6 +232,8 @@ int main() {
 				if (List.at(i).getID() == userID) {
 
 					List.erase(List.begin() + userID - 1);
+
+					List.at(i).setLastModified();
 
 					success = 1;
 
@@ -309,7 +336,185 @@ int main() {
 
 
 		}
+		if (userChoice == 6) {
 
+			ofstream outputFileStream;
+
+			outputFileStream.open("ListItems.txt");
+
+			if (!outputFileStream.is_open()) {
+
+				cout << "Can't create file ListItems.txt." << endl;
+
+				return 1;
+			}
+
+			else {
+
+				for (int i = 0; i < List.size(); i++) {
+
+					outputFileStream << "ID: " << List.at(i).getID() << ", " << "Title: " << List.at(i).getTitle() << ", " << "Description: " << List.at(i).getDescription() << ", " << "Type: " << List.at(i).getType() << ", " << "Priority: " << List.at(i).getPriority() << ", " << "Status: " << List.at(i).getStatus() << ", " << "Create Date: ";
+					List.at(i).getCreateDate();
+					cout << ", " << "Due Date: ";
+					List.at(i).getDueDate();
+					cout << ", " << "Last Modified Date: ";
+					List.at(i).getLastModified(); cout  << endl;
+
+				}
+			}
+			cout << endl;
+			cout << "Items have been successfully written to file named: ListItems.txt" << endl << endl;
+
+		}
+		if (userChoice == 7) {
+
+			string line;
+
+			ifstream myfile("C:\\Users\\ammarhus\\Desktop\\CIS-200\\To-Do List Project\\To-Do List Project\\ListItems.txt");
+
+			if (myfile.is_open()) {
+
+				while (getline(myfile, line)) {
+
+					cout << line << '\n';
+
+				}
+
+				myfile.close();
+
+			}
+			else {
+
+				cout << "Unable to open file (file not created first or error)";
+
+			}
+		}
+		if (userChoice == 8) {
+
+			int userPrintChoice;
+
+			cout << endl;
+			cout << "Print item options (Please enter number):  " << endl << endl;
+			cout << "1: Print All Items" << endl;
+			cout << "2: Print items by chosen type" << endl;
+			cout << "3: Print items by chosen priority" << endl;
+			cout << "4: Print item by specific Id" << endl << endl;
+			cin >> userPrintChoice;
+
+			if (userPrintChoice == 1) {
+
+				cout << endl;
+				cout << "All Items: " << endl << endl;
+
+				for (int i = 0; i < List.size(); i++) {
+
+					cout << "ID: " << List.at(i).getID() << ", " << "Title: " << List.at(i).getTitle() << ", " << "Description: " << List.at(i).getDescription() << ", " << "Type: " << List.at(i).getType() << ", " << "Priority: " << List.at(i).getPriority() << ", " << "Status: " << List.at(i).getStatus() << ", " << "Create Date: "; 
+					List.at(i).getCreateDate();
+					cout << ", " << "Due Date: ";
+					List.at(i).getDueDate();
+					cout << ", " << "Last Modified Date: ";
+					List.at(i).getLastModified();
+					cout << endl;
+
+				}
+
+			}
+			if (userPrintChoice == 2) {
+
+				string userType;
+
+				cout << endl;
+				cout << "What type of items would you like to print? (Enter shopping, housing, or work)" << endl << endl;
+				cin.ignore();
+				getline(cin, userType);
+
+				for (int i = 0; i < List.size(); i++) {
+
+					if (List.at(i).getType() == userType) {
+
+						cout << "ID: " << List.at(i).getID() << ", " << "Title: " << List.at(i).getTitle() << ", " << "Description: " << List.at(i).getDescription() << ", " << "Type: " << List.at(i).getType() << ", " << "Priority: " << List.at(i).getPriority() << ", " << "Status: " << List.at(i).getStatus() << ", " << "Create Date: ";
+						List.at(i).getCreateDate();
+						cout << ", " << "Due Date: ";
+						List.at(i).getDueDate();
+						cout << ", " << "Last Modified Date: ";
+						List.at(i).getLastModified(); cout << endl;
+					}
+
+				}
+
+			}
+			if (userPrintChoice == 3) {
+
+				int userPriority;
+
+				cout << endl;
+				cout << "What priority of items would you like to print? (Enter a number from 1-5)" << endl << endl;
+				cin >> userPriority;
+
+				for (int i = 0; i < List.size(); i++) {
+
+					if (List.at(i).getPriority() == userPriority) {
+
+						cout << "ID: " << List.at(i).getID() << ", " << "Title: " << List.at(i).getTitle() << ", " << "Description: " << List.at(i).getDescription() << ", " << "Type: " << List.at(i).getType() << ", " << "Priority: " << List.at(i).getPriority() << ", " << "Status: " << List.at(i).getStatus() << ", " << "Create Date: ";
+						List.at(i).getCreateDate();
+						cout << ", " << "Due Date: ";
+						List.at(i).getDueDate();
+						cout << ", " << "Last Modified Date: ";
+						List.at(i).getLastModified(); cout << endl;
+					}
+
+				}
+
+			}
+			if (userPrintChoice == 4) {
+
+				int userID;
+
+				cout << endl;
+				cout << "What is the ID of the item you want to print?" << endl << endl;
+				cin >> userID;
+
+				for (int i = 0; i < List.size(); i++) {
+
+					if (List.at(i).getID() == userID) {
+
+						cout << "ID: " << List.at(i).getID() << ", " << "Title: " << List.at(i).getTitle() << ", " << "Description: " << List.at(i).getDescription() << ", " << "Type: " << List.at(i).getType() << ", " << "Priority: " << List.at(i).getPriority() << ", " << "Status: " << List.at(i).getStatus() << ", " << "Create Date: ";
+						List.at(i).getCreateDate();
+						cout << ", " << "Due Date: ";
+						List.at(i).getDueDate();
+						cout << ", " << "Last Modified Date: ";
+						List.at(i).getLastModified(); cout << endl;
+					}
+
+				}
+
+
+			}
+
+		}
+
+		if (userChoice == 9) {
+
+			vector<ToDoItem> newList = List;
+
+			cout << endl;
+			cout << "List has been copied to another new List" << endl << endl;
+			cout << "New List Items: " << endl << endl;
+			cout << "All Items: " << endl << endl;
+
+			for (int i = 0; i < newList.size(); i++) {
+
+				cout << "ID: " << List.at(i).getID() << ", " << "Title: " << List.at(i).getTitle() << ", " << "Description: " << List.at(i).getDescription() << ", " << "Type: " << List.at(i).getType() << ", " << "Priority: " << List.at(i).getPriority() << ", " << "Status: " << List.at(i).getStatus() << ", " << "Create Date: ";
+				List.at(i).getCreateDate();
+				cout << ", " << "Due Date: ";
+				List.at(i).getDueDate();
+				cout << ", " << "Last Modified Date: "; 
+				List.at(i).getLastModified(); cout << endl;
+			}
+
+		}
+
+		cout << endl;
 		cout << "Would you like to preform another action? (Type 1 for yes or 2 for no)" << endl << endl;
 		cin >> again;
 

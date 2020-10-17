@@ -4,6 +4,8 @@
 
 vector<ToDoItem> List;
 
+ToDoItem mytodo[100];
+
 class ToDoList {
 
 public:
@@ -74,13 +76,15 @@ public:
 		cin >> priority;
 
 	
-		 ToDoItem todo(count1, Title, Description, Type, priority, Status);
+		 ToDoItem item(count1, Title, Description, Type, priority, Status);
+
+		 item.setDueDate();
 
 		count1++;
 
-		todo.setID(count1);
+		item.setID(count1);
 
-		List.push_back(todo);
+		List.push_back(item);
 
 		return count1;
 	}
