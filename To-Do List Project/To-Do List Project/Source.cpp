@@ -5,6 +5,94 @@
 #include <fstream>
 #include <ostream>
 
+void copyItemsTo2DArray(vector<ToDoItem> List) {
+
+	ToDoItem twodarray[3][10];
+
+	int countShopping = 0;
+	int countHousing = 0;
+	int countWork = 0;
+
+	for (int i = 0; i < List.size(); i++) {
+
+		if (List.at(i).getType() == "shopping") {
+
+			twodarray[0][countShopping] = List.at(i);
+
+			countShopping++;
+
+		}
+
+		if (List.at(i).getType() == "housing") {
+
+			twodarray[1][countHousing] = List.at(i);
+
+			countHousing++;
+
+		}
+
+		if (List.at(i).getType() == "work") {
+
+			twodarray[2][countWork] = List.at(i);
+
+			countWork++;
+
+		}
+
+
+
+	}
+
+	cout << endl;
+	cout << "Items at 1st row (shopping): " << endl << endl;
+
+	for (int i = 0; i < 100; i++) {
+
+		if (twodarray[0][i + 1] == NULL)
+
+
+		cout << "ID: " << twodarray[0][i].getID() << ", " << "Title: " << twodarray[0][i].getTitle() << ", " << "Description: " << twodarray[0][i].getDescription() << ", " << "Type: " << twodarray[0][i].getType() << ", " << "Priority: " << twodarray[0][i].getPriority() << ", " << "Status: " << twodarray[0][i].getStatus() << ", " << "Create Date: ";
+		twodarray[0][i].getCreateDate();
+		cout << ", " << "Due Date: ";
+		twodarray[0][i].getDueDate();
+		cout << ", " << "Last Modified Date: ";
+		twodarray[0][i].getLastModified();
+		cout << endl << endl;
+
+	}
+
+	cout << endl;
+	cout << "Items at 2nd row (housing): " << endl << endl;
+
+	for (int i = 0; i < 100; i++) {
+
+		cout << "ID: " << twodarray[1][i].getID() << ", " << "Title: " << twodarray[1][i].getTitle() << ", " << "Description: " << twodarray[1][i].getDescription() << ", " << "Type: " << twodarray[1][i].getType() << ", " << "Priority: " << twodarray[1][i].getPriority() << ", " << "Status: " << twodarray[1][i].getStatus() << ", " << "Create Date: ";
+		twodarray[1][i].getCreateDate();
+		cout << ", " << "Due Date: ";
+		twodarray[1][i].getDueDate();
+		cout << ", " << "Last Modified Date: ";
+		twodarray[1][i].getLastModified();
+		cout << endl << endl;
+
+	}
+
+	cout << endl;
+	cout << "Items at 3rd row (work): " << endl << endl;
+
+	for (int i = 0; i < 100; i++) {
+
+		cout << "ID: " << twodarray[2][i].getID() << ", " << "Title: " << twodarray[2][i].getTitle() << ", " << "Description: " << twodarray[2][i].getDescription() << ", " << "Type: " << twodarray[2][i].getType() << ", " << "Priority: " << twodarray[2][i].getPriority() << ", " << "Status: " << twodarray[2][i].getStatus() << ", " << "Create Date: ";
+		twodarray[2][i].getCreateDate();
+		cout << ", " << "Due Date: ";
+		twodarray[2][i].getDueDate();
+		cout << ", " << "Last Modified Date: ";
+		twodarray[2][i].getLastModified();
+		cout << endl << endl;
+
+	}
+
+}
+
 
 
 int main() {
@@ -26,7 +114,9 @@ int main() {
 		cout << "6: Write To-Do Items to a text file" << endl;
 		cout << "7: Read To-Do Items from a text file" << endl;
 		cout << "8: Print Items to console with different options" << endl;
-		cout << "9: Clone current To-Do List to another To-Do List" << endl << endl;
+		cout << "9: Clone current To-Do List to another To-Do List" << endl;
+		cout << "10: Print items from a 2-D array where each row is by item type" << endl;
+		cout << "11: Print items from a 3-D array where each row is by item type and each depth by priority" << endl << endl;
 		cin >> userChoice;
 		cout << endl;
 
@@ -511,6 +601,13 @@ int main() {
 				cout << ", " << "Last Modified Date: "; 
 				List.at(i).getLastModified(); cout << endl;
 			}
+
+		}
+
+		if (userChoice == 10) {
+
+
+			copyItemsTo2DArray(List);
 
 		}
 
