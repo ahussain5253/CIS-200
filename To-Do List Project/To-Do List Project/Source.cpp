@@ -48,9 +48,6 @@ void copyItemsTo2DArray(vector<ToDoItem> List) {
 
 	for (int i = 0; i < 100; i++) {
 
-		if (twodarray[0][i + 1] == NULL)
-
-
 		cout << "ID: " << twodarray[0][i].getID() << ", " << "Title: " << twodarray[0][i].getTitle() << ", " << "Description: " << twodarray[0][i].getDescription() << ", " << "Type: " << twodarray[0][i].getType() << ", " << "Priority: " << twodarray[0][i].getPriority() << ", " << "Status: " << twodarray[0][i].getStatus() << ", " << "Create Date: ";
 		twodarray[0][i].getCreateDate();
 		cout << ", " << "Due Date: ";
