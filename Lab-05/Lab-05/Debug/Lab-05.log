@@ -1,0 +1,6 @@
+﻿  Source.cpp
+C:\Users\Ammar\Desktop\CIS-200\Lab-05\Lab-05\Vector.h(32,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ammar\Desktop\CIS-200\Lab-05\Lab-05\Vector.h(46,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ammar\Desktop\CIS-200\Lab-05\Lab-05\Vector.h(64,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ammar\Desktop\CIS-200\Lab-05\Lab-05\Source.cpp(7,6): warning C4101: 'value': unreferenced local variable
+  Lab-05.vcxproj -> C:\Users\Ammar\Desktop\CIS-200\Lab-05\Debug\Lab-05.exe

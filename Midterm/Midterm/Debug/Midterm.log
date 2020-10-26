@@ -1,0 +1,11 @@
+﻿  Source.cpp
+C:\Users\Ammar\Desktop\CIS-200\Midterm\Midterm\ComplexNumber.h(37,14): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\Ammar\Desktop\CIS-200\Midterm\Midterm\ComplexNumber.h(49,21): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Ammar\Desktop\CIS-200\Midterm\Midterm\Vector.h(10,16): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Ammar\Desktop\CIS-200\Midterm\Midterm\Vector.h(18,25): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Users\Ammar\Desktop\CIS-200\Midterm\Midterm\Vector.h(34,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\Ammar\Desktop\CIS-200\Midterm\Midterm\Vector.h(46,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ammar\Desktop\CIS-200\Midterm\Midterm\Source.cpp(6,25): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Ammar\Desktop\CIS-200\Midterm\Midterm\Source.cpp(9,68): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Ammar\Desktop\CIS-200\Midterm\Midterm\Source.cpp(13,19): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Ammar\Desktop\CIS-200\Midterm\Midterm\Vector.h(42): error C4716: 'Vector::setValue': must return a value
