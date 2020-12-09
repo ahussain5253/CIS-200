@@ -1,15 +1,35 @@
 #include <iostream>
-#include <ctime>
+
 
 using namespace std;
 
 int main() {
 
-	time_t now = time(0);
+	int arr[5] = { 8,9,7,10,2 };
 
-	char* dt = ctime(&now);
+	for (int i = 0; i < 5; i++) {
 
-	cout << dt;
+		for (int j = i + 1; j < 5; j++) {
 
+			if (arr[i] > arr[j]) {
 
+				int temp = arr[i];
+
+				arr[i] = arr[j];
+
+				arr[j] = temp;
+
+			}
+
+		}
+
+	}
+
+	for (int i = 0; i < 5; i++) {
+
+		cout << arr[i] << " ";
+
+	}
+
+	return 0;
 }
